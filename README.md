@@ -1,4 +1,4 @@
-# GitHub Action to `aws s3 cp` a file to an S3 Bucket 🔄 
+# GitHub Action to `aws s3 cp` a file to an S3 Bucket 🔄
 
 This simple action uses the [vanilla AWS CLI](https://docs.aws.amazon.com/cli/index.html) to sync a directory (either from your repository or generated during your workflow) with a remote S3 bucket.
 
@@ -17,10 +17,10 @@ on: push
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
    - uses: actions/checkout@master
-   
+
    - name: Upload binary to S3 bucket
    uses: tpaschalis/s3-sync-action@master
    with:
@@ -41,6 +41,11 @@ jobs:
 | `FILE` | The local file you wish to upload to S3. For example, `./myfile.txt`. | `env` | **Yes** |
 | `AWS_REGION` | The region where you created your bucket in. For example, `eu-central-1`. [Full list of regions here.](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions) | `env` | **Yes** |
 
+### Optional Environment Variables
+
+| Key | Value | Type | Required |
+| ------------- | ------------- | ------------- | ------------- |
+| `DEST` | Optional subdirectory to upload a file to. | `env` | **No** |
 
 ### Required Secret Variables
 
